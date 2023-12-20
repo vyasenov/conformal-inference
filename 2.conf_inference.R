@@ -26,6 +26,17 @@ out.conf = conformal.pred(x, y, x0,
                           predict.fun=funs$predict, 
                           verb=TRUE)
 
+# run split conformal inference
+out.split = conformal.pred.split(x, y, x0, 
+                          alpha=0.1,
+                          train.fun=funs$train, 
+                          predict.fun=funs$predict, 
+                          verb=TRUE)
+
 # print results
 paste('The lower bound is', out.conf$lo, 'and the upper bound is', out.conf$up)
 out.conf$pred
+
+# print results for split conformal inference
+paste('The lower bound is', out.split$lo, 'and the upper bound is', out.split$up)
+out.split$pred
